@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт-визитка</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: white;
+            background: linear-gradient(135deg, #0a3d1d, #3a0a6a);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Видео-фон */
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        
+        /* Основной контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Шапка с логотипом */
+        header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(106, 13, 173, 0.8);
+            margin-bottom: 5px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            background-color: #1a0630;
+        }
+        
+        /* Текстовый блок */
+        .intro-text {
+            background-color: rgba(26, 6, 48, 0.85);
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            border: 1px solid #4a1a7a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Навигационное меню */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+        }
+        
+        .menu a {
+            background: linear-gradient(145deg, #2a0a5a, #1a0630);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            border: 1px solid #6a0dad;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            min-width: 140px;
+        }
+        
+        .menu a:hover {
+            background: linear-gradient(145deg, #3a0a7a, #2a0a5a);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            border-color: #8a2be2;
+        }
+        
+        .menu a:active {
+            transform: translateY(1px);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .menu a {
+                width: 90%;
+                padding: 12px 20px;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Видео фон (замените src на свое видео) -->
+    <video autoplay muted loop id="video-background">
+        <source src="https://example.com/your-video.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+    
+    <div class="container">
+        <header>
+            <!-- Логотип -->
+            <img src="https://via.placeholder.com/150/1a0630/FFFFFF?text=LOGO" alt="Логотип" class="logo">
+            
+            <!-- Текстовый блок -->
+            <div class="intro-text">
+                Welcome to Solabs, your only solution for great atmosphere!
+            </div>
+        </header>
+        
+       
+        <nav>
+            <div class="menu">
+               
+                <a href="https://your-link-for-bot.com">BOT</a>
+                <a href="https://your-link-for-support.com">SUPPORT</a>
+                <a href="https://your-link-for-work.com">WORK</a>
+            </div>
+        </nav>
+    </div>
+    
+    <script>
+        // Замена видео фона (можно заменить на свое)
+        window.onload = function() {
+            const video = document.getElementById('video-background');
+            // video.src = "your-video.mp4"; // Раскомментируйте и укажите путь к своему видео
+        };
+    </script>
+</body>
+</html>
