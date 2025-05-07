@@ -126,10 +126,14 @@
                 padding: 12px 20px;
             }
             
-            .logo {
-                width: 100px;
-                height: 100px;
-            }
+           .logo {
+    width: clamp(80px, 15vw, 150px); /* Минимум 80px, максимум 150px */
+    height: clamp(80px, 15vw, 150px);
+    border: 2px solid #6a0dad;
+    border-radius: 50%;
+    box-sizing: border-box;
+    object-fit: cover;
+}
         }
     </style>
 </head>
