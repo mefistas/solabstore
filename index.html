@@ -48,11 +48,12 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: contain; /* Изменено с cover на contain для GIF */
             border: 3px solid rgba(106, 13, 173, 0.8);
             margin-bottom: 5px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             background-color: #1a0630;
+            padding: 5px; /* Добавлено для GIF */
         }
         
         /* Текстовый блок */
@@ -126,28 +127,28 @@
                 padding: 12px 20px;
             }
             
-           .logo {
-    width: clamp(80px, 15vw, 150px); /* Минимум 80px, максимум 150px */
-    height: clamp(80px, 15vw, 150px);
-    border: 2px solid #6a0dad;
-    border-radius: 50%;
-    box-sizing: border-box;
-    object-fit: cover;
-}
+            .logo {
+                width: clamp(80px, 15vw, 150px);
+                height: clamp(80px, 15vw, 150px);
+                border: 2px solid #6a0dad;
+                border-radius: 50%;
+                box-sizing: border-box;
+                object-fit: contain; /* Сохраняем для мобильных */
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Видео фон (замените src на свое видео) -->
-   <video autoplay muted loop id="video-background">
-    <source src="https://raw.githubusercontent.com/mefista/solabstore/main/YOUR_VIDEO.mp4" type="video/mp4">
-    Your browser does not support HTML5 video.
-</video>
+    <!-- Видео фон -->
+    <video autoplay muted loop id="video-background">
+        <source src="YOUR_VIDEO.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
     
     <div class="container">
         <header>
             <!-- Логотип -->
-            <img src="https://i.ibb.co/SXmNhJk1/Untitled-design-2.gif" alt="Untitled-design-2" border="0"  class="logo">
+            <img src="https://i.ibb.co/SXmNhJk1/Untitled-design-2.gif" alt="Solabs Logo" class="logo">
             
             <!-- Текстовый блок -->
             <div class="intro-text">
@@ -155,10 +156,8 @@
             </div>
         </header>
         
-       
         <nav>
             <div class="menu">
-               
                 <a href="https://your-link-for-bot.com">BOT</a>
                 <a href="https://your-link-for-support.com">SUPPORT</a>
                 <a href="https://your-link-for-work.com">WORK</a>
@@ -166,12 +165,21 @@
         </nav>
     </div>
 
-   <script>
-    // Замена видео фона
-    window.onload = function() {
-        const video = document.getElementById('video-background');
-        video.src = "https://raw.githubusercontent.com/mefista/solabstore/main/YOUR_VIDEO.mp4";
-    };
-</script>
+    <script>
+        // Проверка и загрузка видео
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video-background');
+            
+            // Проверяем, загружается ли видео
+            video.addEventListener('error', function() {
+                console.error('Video failed to load');
+                // Можно добавить fallback изображение
+                document.body.style.background = 'linear-gradient(135deg, #0a3d1d, #3a0a6a)';
+            });
+            
+            // Принудительная загрузка
+            video.load();
+        });
+    </script>
 </body>
 </html>
