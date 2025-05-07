@@ -18,6 +18,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            background-color: #1a0630; /* Фолбэк фон на случай, если видео не загрузится */
         }
         
         /* Видео-фон (исправленное) */
@@ -39,7 +40,15 @@
             padding: 20px;
         }
         
-
+        /* Аватарка - добавлены фиксированные размеры */
+        .avatar {
+            width: 200px; /* Фиксированная ширина */
+            height: 200px; /* Фиксированная высота */
+            margin: 0 auto; /* Центрирование */
+            border-radius: 50%; /* Круглая форма */
+            overflow: hidden; /* Обрезка GIF по кругу */
+            border: 3px solid #4a1a7a;
+        }
         
         .avatar-gif {
             width: 100%;
@@ -88,8 +97,8 @@
             }
             
             .avatar {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
@@ -97,12 +106,17 @@
 <body>
     <!-- Видео фон (работающее) -->
     <video id="video-bg" autoplay muted loop playsinline>
-        <source src="https://github.com/mefistas/solabstore/raw/refs/heads/main/YOUR_VIDEO.mp4" type="video/mp4">
+        <!-- Проблема 2: У вас указан неверный путь к видео -->
+        <!-- Замените YOUR_VIDEO.mp4 на реальное название вашего видеофайла -->
+        <source src="https://github.com/mefistas/solabstore/raw/main/YOUR_VIDEO.mp4" type="video/mp4">
+        <!-- Добавьте дополнительные форматы для лучшей совместимости -->
+        <source src="your-video.webm" type="video/webm">
+        Ваш браузер не поддерживает видео тег.
     </video>
     
     <div class="container">
         <header>
-            <!-- Аватарка с GIF (исправлено) -->
+            <!-- Аватарка с GIF (исправлено) - Проблема 1: размеры теперь фиксированы -->
             <div class="avatar">
                 <img src="https://i.ibb.co/SXmNhJk1/Untitled-design-2.gif" alt="Logo" class="avatar-gif">
             </div>
@@ -127,6 +141,12 @@
             // Принудительное воспроизведение для мобильных
             video.play().catch(e => {
                 console.log('Autoplay prevented, showing fallback');
+                document.body.style.background = 'linear-gradient(135deg, #0a3d1d, #3a0a6a)';
+            });
+            
+            // Проверка загрузки видео
+            video.addEventListener('error', function() {
+                console.error('Video failed to load');
                 document.body.style.background = 'linear-gradient(135deg, #0a3d1d, #3a0a6a)';
             });
         });
