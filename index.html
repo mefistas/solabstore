@@ -20,14 +20,14 @@
       min-height: 100vh;
     }
 
-    #video-bg {
+    #gif-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
       z-index: -1;
+      object-fit: cover;
       opacity: 0.15;
       filter: blur(1px) brightness(0.7);
     }
@@ -119,13 +119,12 @@
   </style>
 </head>
 <body>
-  <video id="video-bg" autoplay muted loop playsinline>
-    <source src="https://github.com/mefistas/solabstore/raw/main/YOUR_VIDEO.mp4" type="video/mp4" />
-  </video>
+  <!-- GIF фон -->
+  <img id="gif-bg" src="./main/YOUR_BACKGROUND.gif" alt="Background" />
 
   <div class="container">
     <div class="avatar">
-      <img src="https://i.pinimg.com/originals/d7/aa/19/d7aa1904f0b961caef4e85eb0d38120b.gif" alt="Solabs logo" />
+      <img src="https://i.giphy.com/l0HlO4V8iCRME3i0g.webp" alt="Logo" />
     </div>
 
     <div class="intro-text">
