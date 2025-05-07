@@ -38,25 +38,33 @@
             padding: 20px;
         }
         
-        /* Шапка с логотипом */
+        /* Шапка с логотипом - ПЕРЕРАБОТАННЫЙ БЛОК */
         header {
             text-align: center;
             margin-bottom: 10px;
         }
         
-        .logo {
-            width: 120px;
-            height: 120px;
+        .logo-container {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            object-fit: contain; /* Изменено с cover на contain для GIF */
             border: 3px solid rgba(106, 13, 173, 0.8);
-            margin-bottom: 5px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             background-color: #1a0630;
-            padding: 5px; /* Добавлено для GIF */
+            padding: 5px;
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Текстовый блок */
+        .logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        
+        /* Остальные стили остаются без изменений */
         .intro-text {
             background-color: rgba(26, 6, 48, 0.85);
             padding: 12px;
@@ -127,13 +135,9 @@
                 padding: 12px 20px;
             }
             
-            .logo {
-                width: clamp(80px, 15vw, 150px);
-                height: clamp(80px, 15vw, 150px);
-                border: 2px solid #6a0dad;
-                border-radius: 50%;
-                box-sizing: border-box;
-                object-fit: contain; /* Сохраняем для мобильных */
+            .logo-container {
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
@@ -147,8 +151,10 @@
     
     <div class="container">
         <header>
-            <!-- Логотип -->
-            <img src="https://i.ibb.co/SXmNhJk1/Untitled-design-2.gif" alt="Solabs Logo" class="logo">
+            <!-- Логотип - НОВАЯ СТРУКТУРА -->
+            <div class="logo-container">
+                <img src="https://i.ibb.co/SXmNhJk1/Untitled-design-2.gif" alt="Solabs Logo" class="logo">
+            </div>
             
             <!-- Текстовый блок -->
             <div class="intro-text">
@@ -170,14 +176,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('video-background');
             
-            // Проверяем, загружается ли видео
             video.addEventListener('error', function() {
                 console.error('Video failed to load');
-                // Можно добавить fallback изображение
                 document.body.style.background = 'linear-gradient(135deg, #0a3d1d, #3a0a6a)';
             });
             
-            // Принудительная загрузка
             video.load();
         });
     </script>
